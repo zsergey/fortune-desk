@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fortune Desk — Privacy Policy and Support</title>
+<meta name="description" content="Fortune Desk collects no data. Your teams stay on your Mac and in your own iCloud.">
+<style>
+/* Layout: an Apple-style legal page — big quiet title, four summary tiles, then the policy as readable prose and a support band. Light and dark. */
+:root {
+  --bg: #ffffff;
+  --band: #f5f5f7;
+  --tile: #ffffff;
+  --line: #d2d2d7;
+  --fg: #1d1d1f;
+  --muted: #6e6e73;
+  --link: #0066cc;
+  --blue: #0071e3;
+  --green: #28a745;
+  --purple: #8e44ec;
+  --orange: #f56300;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  --body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000; --band: #0d0d0f; --tile: #1c1c1e; --line: #38383a;
+    --fg: #f5f5f7; --muted: #a1a1a6; --link: #2997ff; --blue: #0a84ff;
+    --green: #30d158; --purple: #bf5af2; --orange: #ff9f0a; --shadow: none;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.53; -webkit-font-smoothing: antialiased; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { padding-inline: 22px; }
+.inner { max-width: 980px; margin-inline: auto; }
+.narrow { max-width: 692px; margin-inline: auto; }
+section { padding-block: 80px; }
+.band { background: var(--band); }
+h1, h2, h3 { font-family: var(--display); margin: 0; letter-spacing: -0.015em; text-wrap: balance; }
+p { margin: 0; }
+
+nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 80%, transparent); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--line); }
+nav .inner { display: flex; align-items: center; justify-content: space-between; height: 52px; }
+nav b { font-family: var(--display); font-size: 21px; font-weight: 600; letter-spacing: -0.01em; }
+nav .links { display: flex; gap: 22px; font-size: 14px; }
+nav .links a { color: var(--fg); opacity: 0.8; }
+
+.hero { text-align: center; padding-block: 96px 64px; }
+.eyebrow { font-size: 17px; font-weight: 600; color: var(--muted); }
+.hero h1 { font-size: clamp(48px, 9vw, 96px); font-weight: 700; line-height: 1.04; letter-spacing: -0.03em; margin-top: 8px; }
+.hero h1 span { background: linear-gradient(100deg, var(--blue), var(--purple) 55%, var(--orange)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero .lead { font-size: clamp(21px, 2.6vw, 28px); line-height: 1.3; font-weight: 600; color: var(--muted); max-width: 30ch; margin: 22px auto 0; letter-spacing: -0.01em; }
+.hero .lead b { color: var(--fg); }
+
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.tile { background: var(--tile); border-radius: 22px; padding: 28px 24px; box-shadow: var(--shadow); display: grid; gap: 10px; align-content: start; }
+.tile svg { width: 40px; height: 40px; }
+.tile h3 { font-size: 21px; font-weight: 700; line-height: 1.2; }
+.tile p { color: var(--muted); font-size: 15px; line-height: 1.45; }
+
+.policy h2 { font-size: clamp(32px, 4.5vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.08; }
+.policy .date { color: var(--muted); margin-top: 10px; }
+.policy h3 { font-size: 24px; font-weight: 700; margin-top: 44px; }
+.policy p, .policy li { margin-top: 12px; }
+.policy ul { padding-left: 1.2em; margin: 0; }
+.policy li::marker { color: var(--muted); }
+.policy .callout { margin-top: 32px; padding: 22px 24px; border-radius: 18px; background: var(--band); }
+
+.support { text-align: center; }
+.support h2 { font-size: clamp(40px, 7vw, 72px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+.support .lead { font-size: clamp(19px, 2.4vw, 24px); color: var(--muted); max-width: 34ch; margin: 18px auto 0; font-weight: 500; }
+.btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; padding: 14px 26px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 17px; font-weight: 600; }
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.btn svg { width: 20px; height: 20px; }
+.faq { margin: 64px auto 0; text-align: left; display: grid; gap: 12px; }
+.faq details { background: var(--tile); border-radius: 18px; padding: 20px 24px; box-shadow: var(--shadow); }
+.faq summary { cursor: pointer; font-weight: 600; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--blue); font-size: 24px; line-height: 1; transition: transform .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq p { color: var(--muted); margin-top: 10px; font-size: 16px; }
+
+footer { border-top: 1px solid var(--line); padding-block: 22px 40px; font-size: 12px; color: var(--muted); }
+footer .inner { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+@media (max-width: 860px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  section { padding-block: 56px; }
+  .tiles { grid-template-columns: minmax(0, 1fr); }
+  nav .links { gap: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<nav class="wrap"><div class="inner"><b>Fortune Desk</b><div class="links"><a href="#privacy">Privacy</a><a href="#support">Support</a></div></div></nav>
+
+<main>
+  <section class="hero wrap" id="privacy">
+    <div class="inner">
+      <p class="eyebrow">Fortune Desk Privacy</p>
+      <h1>Your teams.<br><span>Yours alone.</span></h1>
+      <p class="lead">Fortune Desk collects <b>no data at all</b>. Your teams live on your Mac and in your own iCloud — not with us.</p>
+    </div>
+  </section>
+
+  <section class="band wrap">
+    <div class="inner">
+      <div class="tiles">
+        <article class="tile">
+          <svg viewBox="0 0 40 40" fill="none" stroke="var(--blue)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M9.5 9.5l21 21"/></svg>
+          <h3>No data collected</h3><p>We don't receive names, teams, history or anything else from the app.</p>
+        </article>
+        <article class="tile">
+          <svg viewBox="0 0 40 40" fill="none" stroke="var(--green)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 29h17a7 7 0 0 0 .8-13.96A10 10 0 0 0 10.6 17 6 6 0 0 0 12 29z"/></svg>
+          <h3>Your own iCloud</h3><p>Teams sync between your Macs through your private iCloud database.</p>
+        </article>
+        <article class="tile">
+          <svg viewBox="0 0 40 40" fill="none" stroke="var(--purple)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20s6-11 16-11 16 11 16 11-6 11-16 11S4 20 4 20z"/><circle cx="20" cy="20" r="4.5"/><path d="M7 33L33 7"/></svg>
+          <h3>No tracking</h3><p>No analytics, no ads, no third-party SDKs. Nothing follows you around.</p>
+        </article>
+        <article class="tile">
+          <svg viewBox="0 0 40 40" fill="none" stroke="var(--orange)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="14" r="6"/><path d="M8 34c1.6-6.5 6.4-10 12-10s10.4 3.5 12 10"/><path d="M28 6l6 6M34 6l-6 6"/></svg>
+          <h3>No account</h3><p>There's nothing to sign up for. Open the app and pull the lever.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap policy">
+    <div class="narrow">
+      <h2>Privacy Policy</h2>
+      <p class="date">Effective November 17, 2026</p>
+
+      <p style="margin-top:28px">Fortune Desk is a Mac app that picks who hosts a team meeting with a spin of a wheel. This policy explains what happens to the information you put into it. The short answer: it stays with you.</p>
+
+      <h3>Information we collect</h3>
+      <p>None. The developer of Fortune Desk does not collect, receive, store or share any personal information or usage data from the app. The app has no analytics, no advertising and no crash-reporting services of its own.</p>
+
+      <h3>Information you keep in the app</h3>
+      <p>To work, Fortune Desk keeps what you type into it:</p>
+      <ul>
+        <li>team names and the names of people on each wheel;</li>
+        <li>the history of who hosted and when;</li>
+        <li>an optional picture you choose for the centre of the wheel.</li>
+      </ul>
+      <p>This information is stored on your Mac. If you are signed in to iCloud, it is also stored in the private database of your own iCloud account, so your teams appear on all your Macs. The private database is accessible only to you; the developer cannot see it. Apple handles iCloud data under the <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>.</p>
+
+      <h3>Pictures</h3>
+      <p>Fortune Desk can read only the picture file you choose yourself or drop onto its window. It resizes the picture and keeps the copy with the team. It doesn't browse your files or photo library.</p>
+
+      <h3>Settings</h3>
+      <p>A few preferences — the selected team, whether sound is on and whether the first-run tips were shown — are kept on your Mac only.</p>
+
+      <h3>Third parties</h3>
+      <p>Fortune Desk uses no third-party services. The only service it connects to is Apple's iCloud, and only for syncing your own data between your devices.</p>
+
+      <h3>Children</h3>
+      <p>Fortune Desk collects no information from anyone, including children.</p>
+
+      <h3>Deleting your data</h3>
+      <p>Delete a team in the app and it is removed from your Mac and from your iCloud. To remove everything, delete the app and, in System Settings, open your Apple Account → iCloud → Manage Account Storage, choose Fortune Desk and delete its data.</p>
+
+      <h3>Changes to this policy</h3>
+      <p>If this policy changes, the new version will be posted on this page with a new effective date.</p>
+
+      <p class="callout">Questions about privacy? Write to the developer on Telegram: <a href="https://t.me/breakthrough">t.me/breakthrough</a>.</p>
+    </div>
+  </section>
+
+  <section class="band wrap support" id="support">
+    <div class="inner">
+      <p class="eyebrow">Fortune Desk Support</p>
+      <h2>Need a hand?</h2>
+      <p class="lead">Write to the developer on Telegram. Questions, bugs and ideas are all welcome.</p>
+      <a class="btn" href="https://t.me/breakthrough"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.4 4.1 2.9 11.3c-1.3.5-1.3 1.2-.2 1.6l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.5zM8.6 14.1l9.7-6.1c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.7-4.9z"/></svg>t.me/breakthrough</a>
+
+      <div class="faq narrow">
+        <details><summary>How do I start?</summary><p>Type your team's name, add people one by one or as a comma-separated list, then pull the lever. You need at least two names.</p></details>
+        <details><summary>Someone is out today. How do I skip them?</summary><p>Click their name under “Who's in the wheel today” and they'll sit this one out. Click again to bring them back. If the wheel already picked them, choose “Take off the wheel” and spin again.</p></details>
+        <details><summary>My teams don't show up on my other Mac.</summary><p>Make sure both Macs are signed in to the same Apple Account with iCloud turned on, and that both run the latest Fortune Desk. The first sync can take a minute.</p></details>
+        <details><summary>Can I keep several teams?</summary><p>Yes. Use the arrow next to the team name, or File → New Team. Each team has its own people, history and picture.</p></details>
+        <details><summary>Is the pick really random?</summary><p>Yes. The wheel spins on real physics, and every person is equally likely, no matter where the last spin stopped.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap"><div class="inner"><span>Fortune Desk · Sergey Zapuhlyak</span><span><a href="#privacy">Privacy Policy</a> · <a href="#support">Support</a></span></div></footer>
+</body>
+</html>
