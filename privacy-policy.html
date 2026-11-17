@@ -95,13 +95,24 @@ footer .inner { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: 
   nav .links { gap: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Language: English by default (and without JavaScript), Russian when the browser prefers it or ?lang=ru */
+html[data-lang="ru"] [data-l="en"], html:not([data-lang="ru"]) [data-l="ru"] { display: none !important; }
+.lang { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--band); border: 1px solid var(--line); }
+.lang button { border: 0; background: none; color: var(--muted); font: 600 12px var(--body); padding: 4px 10px; border-radius: 999px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--tile); color: var(--fg); box-shadow: var(--shadow); }
+nav .links { align-items: center; }
 </style>
 </head>
 <body>
-<nav class="wrap"><div class="inner"><b>Fortune Desk</b><div class="links"><a href="#privacy">Privacy</a><a href="#support">Support</a></div></div></nav>
+<nav class="wrap"><div class="inner"><b>Fortune Desk</b><div class="links">
+  <a href="#privacy"><span data-l="en">Privacy</span><span data-l="ru">Приватность</span></a>
+  <a href="#support"><span data-l="en">Support</span><span data-l="ru">Поддержка</span></a>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-set="en" aria-pressed="true">EN</button><button type="button" data-set="ru" aria-pressed="false">RU</button></div>
+</div></div></nav>
 
-<main>
-  <section class="hero wrap" id="privacy">
+<main lang="en" data-l="en">
+  <section class="hero wrap" id="privacy" data-anchor="privacy">
     <div class="inner">
       <p class="eyebrow">Fortune Desk Privacy</p>
       <h1>Your teams.<br><span>Yours alone.</span></h1>
@@ -173,7 +184,7 @@ footer .inner { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: 
     </div>
   </section>
 
-  <section class="band wrap support" id="support">
+  <section class="band wrap support" id="support" data-anchor="support">
     <div class="inner">
       <p class="eyebrow">Fortune Desk Support</p>
       <h2>Need a hand?</h2>
@@ -191,6 +202,120 @@ footer .inner { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: 
   </section>
 </main>
 
-<footer class="wrap"><div class="inner"><span>Fortune Desk · Sergey Zapuhlyak</span><span><a href="#privacy">Privacy Policy</a> · <a href="#support">Support</a></span></div></footer>
+<main lang="ru" data-l="ru">
+  <section class="hero wrap" data-anchor="privacy">
+    <div class="inner">
+      <p class="eyebrow">Fortune Desk и приватность</p>
+      <h1>Твои команды.<br><span>Только твои.</span></h1>
+      <p class="lead">Fortune Desk <b>не собирает никаких данных</b>. Команды живут на твоём Mac и в твоём iCloud — не у нас.</p>
+    </div>
+  </section>
+
+  <section class="band wrap">
+    <div class="inner">
+      <div class="tiles">
+        <article class="tile"><svg viewBox="0 0 40 40" fill="none" stroke="var(--blue)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M9.5 9.5l21 21"/></svg><h3>Никаких данных</h3><p>Мы не получаем ни имён, ни команд, ни истории — ничего из приложения.</p></article>
+        <article class="tile"><svg viewBox="0 0 40 40" fill="none" stroke="var(--green)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 29h17a7 7 0 0 0 .8-13.96A10 10 0 0 0 10.6 17 6 6 0 0 0 12 29z"/></svg><h3>Твой iCloud</h3><p>Команды синхронизируются между твоими Mac через твою личную базу iCloud.</p></article>
+        <article class="tile"><svg viewBox="0 0 40 40" fill="none" stroke="var(--purple)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20s6-11 16-11 16 11 16 11-6 11-16 11S4 20 4 20z"/><circle cx="20" cy="20" r="4.5"/><path d="M7 33L33 7"/></svg><h3>Без слежки</h3><p>Ни аналитики, ни рекламы, ни сторонних SDK. За тобой ничего не следит.</p></article>
+        <article class="tile"><svg viewBox="0 0 40 40" fill="none" stroke="var(--orange)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="14" r="6"/><path d="M8 34c1.6-6.5 6.4-10 12-10s10.4 3.5 12 10"/><path d="M28 6l6 6M34 6l-6 6"/></svg><h3>Без аккаунта</h3><p>Регистрироваться не нужно. Открой приложение и тяни рычаг.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap policy">
+    <div class="narrow">
+      <h2>Политика конфиденциальности</h2>
+      <p class="date">Действует с 17 ноября 2026 года</p>
+
+      <p style="margin-top:28px">Fortune Desk — приложение для Mac, которое выбирает ведущего встречи вращением колеса. Здесь написано, что происходит с тем, что ты в него вводишь. Коротко: всё остаётся у тебя.</p>
+
+      <h3>Какие данные мы собираем</h3>
+      <p>Никаких. Разработчик Fortune Desk не собирает, не получает, не хранит и не передаёт ни личные данные, ни данные об использовании приложения. В приложении нет аналитики, рекламы и собственных сервисов отчётов о сбоях.</p>
+
+      <h3>Что хранится в приложении</h3>
+      <p>Чтобы работать, Fortune Desk хранит то, что ты в него вводишь:</p>
+      <ul>
+        <li>названия команд и имена людей на каждом колесе;</li>
+        <li>историю — кто и когда вёл встречу;</li>
+        <li>картинку для центра колеса, если ты её выбрал.</li>
+      </ul>
+      <p>Эти данные хранятся на твоём Mac. Если ты вошёл в iCloud, они также хранятся в личной базе твоего аккаунта iCloud — так команды появляются на всех твоих Mac. Личная база доступна только тебе, разработчик её не видит. Данные iCloud Apple обрабатывает по <a href="https://www.apple.com/legal/privacy/ru/">Политике конфиденциальности Apple</a>.</p>
+
+      <h3>Картинки</h3>
+      <p>Fortune Desk может прочитать только тот файл картинки, который ты выбрал сам или перетащил на окно. Приложение уменьшает картинку и хранит копию вместе с командой. Твои файлы и фотобиблиотеку оно не просматривает.</p>
+
+      <h3>Настройки</h3>
+      <p>Несколько настроек — выбранная команда, включён ли звук и были ли показаны подсказки первого запуска — хранятся только на твоём Mac.</p>
+
+      <h3>Сторонние сервисы</h3>
+      <p>Fortune Desk не использует сторонних сервисов. Единственный сервис, к которому оно подключается, — iCloud от Apple, и только чтобы синхронизировать твои же данные между твоими устройствами.</p>
+
+      <h3>Дети</h3>
+      <p>Fortune Desk ни у кого не собирает данных, в том числе у детей.</p>
+
+      <h3>Как удалить данные</h3>
+      <p>Удали команду в приложении — она исчезнет с твоего Mac и из твоего iCloud. Чтобы удалить всё, удали приложение, а в Системных настройках открой свой Аккаунт Apple → iCloud → «Управлять хранилищем», выбери Fortune Desk и удали его данные.</p>
+
+      <h3>Изменения политики</h3>
+      <p>Если политика изменится, новая версия появится на этой странице с новой датой.</p>
+
+      <p class="callout">Вопросы о приватности? Напиши разработчику в Telegram: <a href="https://t.me/breakthrough">t.me/breakthrough</a>.</p>
+    </div>
+  </section>
+
+  <section class="band wrap support" data-anchor="support">
+    <div class="inner">
+      <p class="eyebrow">Поддержка Fortune Desk</p>
+      <h2>Нужна помощь?</h2>
+      <p class="lead">Напиши разработчику в Telegram. Вопросы, ошибки и идеи — всё пригодится.</p>
+      <a class="btn" href="https://t.me/breakthrough"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.4 4.1 2.9 11.3c-1.3.5-1.3 1.2-.2 1.6l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.5zM8.6 14.1l9.7-6.1c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.7-4.9z"/></svg>t.me/breakthrough</a>
+
+      <div class="faq narrow">
+        <details><summary>С чего начать?</summary><p>Впиши название команды, добавь людей по одному или списком через запятую и потяни рычаг. Нужно хотя бы два имени.</p></details>
+        <details><summary>Кого-то сегодня нет. Как его пропустить?</summary><p>Нажми на его имя в «Кто сегодня в колесе» — и он пропустит этот раз. Нажми ещё раз, чтобы вернуть. Если колесо уже выбрало его, нажми «Убрать с колеса» и крути ещё.</p></details>
+        <details><summary>Команды не появились на другом Mac.</summary><p>Проверь, что оба Mac вошли в один Аккаунт Apple с включённым iCloud и на обоих стоит последняя версия Fortune Desk. Первая синхронизация может занять минуту.</p></details>
+        <details><summary>Можно вести несколько команд?</summary><p>Да. Нажми на стрелку рядом с названием команды или выбери «Файл» → «Новая команда». У каждой команды свои люди, история и картинка.</p></details>
+        <details><summary>Выбор правда случайный?</summary><p>Да. Колесо крутится по настоящей физике, и у каждого одинаковые шансы, где бы ни остановился прошлый спин.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap"><div class="inner"><span>Fortune Desk · Sergey Zapuhlyak</span>
+  <span data-l="en"><a href="#privacy">Privacy Policy</a> · <a href="#support">Support</a></span>
+  <span data-l="ru"><a href="#privacy">Политика конфиденциальности</a> · <a href="#support">Поддержка</a></span>
+</div></footer>
+<script>
+(function () {
+  var titles = { en: "Fortune Desk — Privacy Policy and Support", ru: "Fortune Desk — Политика конфиденциальности и поддержка" };
+  function stored() { try { return localStorage.getItem("lang"); } catch (e) { return null; } }
+  function remember(l) { try { localStorage.setItem("lang", l); } catch (e) {} }
+  function pick() {
+    var q = new URLSearchParams(location.search).get("lang");
+    if (q === "ru" || q === "en") return q;
+    var s = stored();
+    if (s === "ru" || s === "en") return s;
+    var langs = navigator.languages || [navigator.language || ""];
+    for (var i = 0; i < langs.length; i++) { if (/^ru\b/i.test(langs[i])) return "ru"; if (/^en\b/i.test(langs[i])) return "en"; }
+    return "en";
+  }
+  function apply(l, scroll) {
+    var root = document.documentElement;
+    root.setAttribute("data-lang", l);
+    root.lang = l;
+    document.title = titles[l];
+    // #privacy and #support point at the sections of the language on screen
+    document.querySelectorAll("[data-anchor]").forEach(function (el) {
+      el.id = el.closest("main").getAttribute("lang") === l ? el.getAttribute("data-anchor") : "";
+    });
+    document.querySelectorAll(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-set") === l)); });
+    if (scroll && location.hash) { var t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); }
+  }
+  apply(pick(), true);
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.addEventListener("click", function () { var l = b.getAttribute("data-set"); remember(l); apply(l, false); });
+  });
+})();
+</script>
 </body>
 </html>
