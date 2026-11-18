@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fortune Desk Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: Apple-style product page, one idea per band; the app's real wheel plays the tutorial by itself in a window, and the step under it lights up as it plays. Deliberate single dark look. */
+:root {
+  --bg: #000000;
+  --band: #0d0d0f;
+  --tile: #161618;
+  --line: #2a2a2e;
+  --fg: #f5f5f7;
+  --muted: #86868b;
+  --brand: #4a7cf0;
+  --sky: #64d2ff;
+  --gold: #f2be2e;
+  --display: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, "Helvetica Neue", Arial, sans-serif;
+  --body: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--fg); }
+body { margin: 0; font-family: var(--body); font-size: 17px; line-height: 1.47; -webkit-font-smoothing: antialiased; }
+.wrap { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.inner { max-width: 1080px; margin-inline: auto; }
+section { padding-block: 96px; }
+.band { background: var(--band); }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.eyebrow { font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.lead { font-size: clamp(19px, 2.4vw, 24px); line-height: 1.35; color: var(--muted); max-width: 40ch; font-weight: 500; }
+.lead b { color: var(--fg); font-weight: 600; }
+
+/* ---------- Tour: the title and the steps on the left, the demo on the right, all on one screen ---------- */
+.tour { min-height: 100vh; min-height: 100svh; padding-block: 32px; display: grid; align-items: center; }
+.tour .inner { max-width: 1600px; width: 100%; display: grid; grid-template-columns: minmax(280px, 340px) minmax(0, 1fr); gap: 40px; align-items: center; }
+.intro { display: grid; gap: 14px; align-content: center; }
+.intro h1 { font-size: clamp(44px, 4.6vw, 64px); font-weight: 700; line-height: 1; letter-spacing: -0.035em; }
+.glow-text {
+  background: linear-gradient(100deg, var(--brand), var(--sky) 35%, var(--gold) 65%, var(--brand));
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: sheen 8s ease-in-out infinite alternate;
+}
+@keyframes sheen { to { background-position: 100% 0; } }
+.intro .sub { font-size: clamp(22px, 2.2vw, 28px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
+.intro .sub span { color: var(--muted); }
+.intro .see { margin-top: 18px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gold); }
+
+.steps { display: grid; gap: 10px; }
+.step { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 4px 14px; background: var(--tile); border-radius: 20px; padding: 16px 18px; transition: box-shadow 0.4s, background 0.4s; }
+.step.on { background: #1d1d20; box-shadow: 0 0 0 2px var(--gold), 0 16px 48px -18px rgba(242, 190, 46, 0.5); }
+.num { grid-row: span 2; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: #2a2a2e; color: var(--fg); font-family: var(--display); font-weight: 700; font-size: 16px; transition: background 0.4s, color 0.4s; }
+.step.on .num { background: var(--gold); color: #000; }
+.step h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; align-self: center; }
+.step p { color: var(--muted); font-size: 14px; line-height: 1.4; }
+.step p b { color: var(--fg); font-weight: 600; }
+
+.stage { position: relative; display: grid; justify-items: center; min-width: 0; }
+.stage::before {
+  content: ""; position: absolute; inset: 8% 6%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(74, 124, 240, 0.5), transparent);
+  filter: blur(50px);
+}
+/* The demo is laid out at 1180 × 760 and scaled to fit: as wide as the column allows and never taller than the screen. */
+.screen {
+  position: relative; width: min(100%, calc((100vh - 96px) * 1.5526)); max-width: 100%; aspect-ratio: 1180 / 760;
+  border-radius: 14px; overflow: hidden; background: #eaf0fc;
+  box-shadow: 0 50px 120px -40px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.screen iframe { position: absolute; left: 0; top: 0; width: 1180px; height: 760px; border: 0; transform-origin: 0 0; pointer-events: none; }
+.note { position: relative; margin-top: 12px; text-align: center; color: var(--muted); font-size: 13px; }
+
+/* ---------- Trust ---------- */
+.heading { display: grid; gap: 18px; margin-bottom: 48px; text-align: center; }
+.heading h2 { font-size: clamp(36px, 6vw, 64px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; }
+.trust { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.trust div { background: var(--tile); border-radius: 28px; padding: 32px 28px; }
+.big { font-family: var(--display); font-weight: 700; font-size: clamp(48px, 7vw, 72px); line-height: 1; letter-spacing: -0.03em; }
+.trust div:nth-child(1) .big { color: var(--brand); }
+.trust div:nth-child(2) .big { color: var(--gold); }
+.trust div:nth-child(3) .big { color: var(--sky); }
+.trust h3 { font-size: 21px; font-weight: 700; margin-top: 14px; }
+.trust p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+
+/* ---------- Finale ---------- */
+.finale { text-align: center; }
+.finale h2 { font-size: clamp(44px, 8vw, 88px); font-weight: 700; line-height: 1.02; letter-spacing: -0.035em; }
+.finale p { color: var(--muted); margin-top: 20px; }
+
+@media (max-width: 900px) {
+  .tour { min-height: 0; }
+  .tour .inner { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .stage { order: 2; }
+  .steps { order: 3; }
+  .screen { width: 100%; }
+}
+@media (max-width: 760px) {
+  section { padding-block: 64px; }
+  .tour { padding-block: 40px; }
+  .trust { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-text { animation: none; }
+}
+</style>
+</head>
+<body>
+<main>
+  <section class="tour wrap">
+    <div class="inner">
+      <div class="intro">
+        <p class="eyebrow">Fortune Desk for Mac</p>
+        <h1><span class="glow-text">Fortune Desk</span></h1>
+        <p class="sub">Picks who hosts the daily stand-up. <span>For any team, in any company.</span></p>
+        <p class="see">See how the app works</p>
+        <div class="steps">
+          <div class="step on" data-step="1">
+            <div class="num">1</div>
+            <h3>Name your team</h3>
+            <p>Type it in the title. It goes into the <b>window title</b> too.</p>
+          </div>
+          <div class="step" data-step="2">
+            <div class="num">2</div>
+            <h3>Add your people</h3>
+            <p>One by one or as a <b>comma-separated list</b>, at least two.</p>
+          </div>
+          <div class="step" data-step="3">
+            <div class="num">3</div>
+            <h3>Pull the lever</h3>
+            <p>Drag it down or press <b>Space</b>. The wheel picks <b>today's host</b>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="screen" id="screen">
+          <iframe id="demo" src="demo.html" title="Fortune Desk tutorial: the team is named, names are added and the lever is pulled" loading="eager" tabindex="-1"></iframe>
+        </div>
+        <p class="note">A demo that plays by itself. The wheel works in the app.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band wrap">
+    <div class="inner">
+      <div class="heading">
+        <h2>Nothing to sign up for.<br>Nothing to buy.</h2>
+      </div>
+      <div class="trust">
+        <div><div class="big">0</div><h3>Accounts</h3><p>No registration and no login. Open the app and start.</p></div>
+        <div><div class="big">Free</div><h3>For every team</h3><p>No ads and no in-app purchases.</p></div>
+        <div><div class="big">iCloud</div><h3>Private sync</h3><p>Teams sync between your own Macs through your iCloud account.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap finale">
+    <div class="inner">
+      <h2><span class="glow-text">Who hosts today?</span></h2>
+      <p>Fortune Desk · Mac App Store · macOS 14 Sonoma or later · English and Russian</p>
+    </div>
+  </section>
+</main>
+<script>
+(() => {
+  const screen = document.getElementById("screen"), frame = document.getElementById("demo");
+  const fit = () => { frame.style.transform = `scale(${screen.clientWidth / 1180})`; };
+  new ResizeObserver(fit).observe(screen);
+  fit();
+  // The demo tells which step it is playing; that step lights up. After the pick (4) step 3 stays lit.
+  const steps = [...document.querySelectorAll(".step")];
+  window.addEventListener("message", (e) => {
+    if (e.source !== frame.contentWindow) return;
+    const n = Math.min(3, Number(e.data && e.data.fortuneDeskDemo) || 0);
+    if (!n) return;
+    steps.forEach((s) => s.classList.toggle("on", Number(s.dataset.step) === n));
+  });
+})();
+</script>
+</body>
+</html>
